@@ -12,6 +12,7 @@ namespace Cheers
             // Variables Section
             String prompt = "> ";
             String cheer_prefix = "Give me a";
+            String requires_an = "aeiolnfshrmx";
 
 
             // This will tell the terminal to print the content of the string in the terminal
@@ -19,11 +20,18 @@ namespace Cheers
             // This is telling the terminal to print this out on the terminal
             Console.Write(prompt);
             // The word "String" here tells the program the type you are putting in"
-            String user_name = Console.ReadLine(); // Read from terminal save to variable
+            String user_name = Console.ReadLine().ToLower(); // Read from terminal save to variable
 
             // This is a for loop that loops through the user_name because it is a string but also an array
             for (int i = 0; i < user_name.Length; i++) {
-                Console.WriteLine(cheer_prefix + "..." + user_name[i]);
+                if (requires_an.IndexOf(user_name[i]) > -1) {
+                    // Then it's in the requires_an array!!!!
+                    Console.WriteLine(cheer_prefix + "n" + "..." + user_name[i]);
+                } else {
+                    // Does not require an "an"
+                    Console.WriteLine(cheer_prefix + "..." + user_name[i]);
+                }
+                
             }
 
             // The "ToUpper()" method makes the string return all uppercase letters
@@ -31,7 +39,7 @@ namespace Cheers
             // ToUpper() is functionality specific to STRINGS
             // ToUpper() accepts no arguments
 
-            Console.WriteLine(user_name.ToUpper() + " is..GRAND!");
+            Console.WriteLine(user_name.ToUpper() + " is..GRAND!"); //
         }
     }
 }
